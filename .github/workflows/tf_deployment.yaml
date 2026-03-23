@@ -16,6 +16,11 @@ jobs:
          uses: hashicorp/setup-terraform@v4
          with:
            terraform_version: 1.14.7
+       - name: Check aws existence
+         run: |
+              echo ##################################
+              which aws && aws --version
+              echo ##################################
        - name: Install AWS CLI
          run: |
               curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
