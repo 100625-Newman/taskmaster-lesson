@@ -27,6 +27,14 @@ jobs:
               echo "##################################"     
               which aws && aws --version
               echo "##################################"
+
+
+       - name: download-artifacts
+         uses: dawidd6/actions-download-artifact@v19
+         with:
+           name: tf state documentation
+           runid: ${{ github.run_id }}
+           path: taskmaster-lesson/terraform/terraform.tfstate       
        - name: set aws credentials + tf init plan apply
          run: |
            echo "setting up aws credentials"
