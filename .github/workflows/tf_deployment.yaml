@@ -1,6 +1,8 @@
 name: Terraform Deployment
 on:
   push:
+    paths:
+      - .github/workflows/tf_deployment.yaml
     branches: [ main ]
 jobs:
   build_runner:
