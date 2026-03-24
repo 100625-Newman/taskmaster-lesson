@@ -30,7 +30,7 @@ jobs:
 
 
        - name: download-artifacts
-         uses: dawidd6/actions-download-artifact@v19
+         uses: /dawidd6/action-download-artifact@v19
          with:
            name: tf state documentation
            runid: ${{ github.run_id }}
