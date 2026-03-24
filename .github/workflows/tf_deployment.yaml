@@ -27,14 +27,6 @@ jobs:
               echo "##################################"     
               which aws && aws --version
               echo "##################################"
-       - name: Install AWS CLI
-         run: |
-              echo "installing aws cli"
-              curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-              unzip awscliv2.zip
-              sudo ./aws/install --update
-              rm awscliv2.zip
-              echo "cleaned up aws cli installer"
        - name: set aws credentials + tf init plan
          run: |
            echo "setting up aws credentials"
@@ -49,3 +41,9 @@ jobs:
            cd terraform
            terraform init
            terraform plan
+
+       - name: upload-artifacts
+         uses: actions/upload-artifact@v7
+         with:
+           name: tf state documentation
+           path: taskmaster-lesson/terraform/terraform.tfstate
