@@ -17,7 +17,7 @@ jobs:
           sudo apt install python3-pip -y
       - name: install requirements
         run: |
-          cd taskmaster-lesson
+          cd taskmaster-lesson/app
           ls -lha
           pip install -r taskmaster-lesson/app/requirements.txt
       - name: run tests
