@@ -41,4 +41,4 @@ jobs:
          uses: actions/upload-artifact@v7
          with:
            name: tf state documentation
-           path: terraform/terraform.tfstate
+           path: terraform/
