@@ -24,6 +24,6 @@ jobs:
         run: |
           cd taskmaster-lesson/tests
           ls -lha
-          python3 -m pytest tests/test.py
+          python3 -m pytest tests/test_app.py
 
         
