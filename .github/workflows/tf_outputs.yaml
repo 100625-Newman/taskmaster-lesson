@@ -30,4 +30,9 @@ jobs:
           cd terraform
           terraform init
           terraform validate
-          terraform output -txt > tf_outputs.txt
+          terraform output -json > tf_outputs.json
+      - name: upload-artifacts
+        uses: actions/upload-artifact@v7  
+        with:
+          name: tf outputs
+        path: terraform/tf_outputs.json
