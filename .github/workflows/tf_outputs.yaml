@@ -4,6 +4,8 @@ on:
 jobs:
   outputs_runner:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: grab the code
         run: git clone https://github.com/100625-Newman/taskmaster-lesson.git 
@@ -30,4 +32,9 @@ jobs:
           cd terraform
           terraform init
           terraform validate
-          terraform output -txt > tf_outputs.txt
+          terraform output -json > tf_outputs.json
+      - name: upload-artifacts
+        uses: actions/upload-artifact@v7  
+        with:
+          name: tf outputs
+        path: terraform/tf_outputs.json
