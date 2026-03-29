@@ -25,7 +25,7 @@ jobs:
          with:
            name: tf state documentation
            continue-on-error: true
-           path: taskmaster-lesson/terraform/    
+           path: terraform/    
        - name: set aws credentials + tf init plan apply
          run: |
            echo "setting up aws credentials"
@@ -41,4 +41,4 @@ jobs:
          uses: actions/upload-artifact@v7
          with:
            name: tf state documentation
-           path: terraform/terraform.tfstate
+           path: terraform/
