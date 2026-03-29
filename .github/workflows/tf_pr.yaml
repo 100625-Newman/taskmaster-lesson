@@ -1,0 +1,33 @@
+name: tf_pr
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build_runner:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Checkout code
+         uses: actions/checkout@v5
+       - name : grab the code
+         run: git clone https://github.com/100625-Newman/taskmaster-lesson.git
+       - name: Install Terraform
+         uses: hashicorp/setup-terraform@v4
+         with:
+           terraform_version: 1.14.7
+       - name: download-artifacts
+         uses: /dawidd6/action-download-artifact@v19
+         with:
+           name: tf state documentation
+           continue-on-error: true
+       - name: set aws credentials + tf init plan apply
+         run: |
+           echo "setting up aws credentials"
+           export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY }}
+           export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS }}
+           export AWS_DEFAULT_REGION=us-east-1
+       - name: tf plan
+         run: |
+           cd taskmaster-lesson/terraform
+           terraform init
+           terraform plan
