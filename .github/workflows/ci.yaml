@@ -26,6 +26,6 @@ jobs:
           cd taskmaster-lesson/tests
           ls -lha
           
-          pytest /home/runner/work/taskmaster-lesson/taskmaster-lesson/app/app.py
+          pytest ./test_app.py 
 
         
